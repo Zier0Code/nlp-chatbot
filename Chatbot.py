@@ -28,7 +28,7 @@ import json
 import requests
 # import pandas as pd 
 
-response = requests.get("https://orcaapi.zeeralad.a2hosted.com/api/intentall")
+response = requests.get("https://api.avila.aesirasdf.com/api/intentall")
 
 if response.status_code == 200:
     # Get the data from the response
@@ -209,7 +209,9 @@ model.compile(loss = "categorical_crossentropy",
              metrics = ["accuracy"])
 
 # print(model.summary())
-model.fit(x=train_x, y=train_y, epochs=150, verbose = 1)
+history = model.fit(x=train_x, y=train_y, epochs=150, verbose=1)
+model_accuracy = history.history['accuracy'][-1]
+# model.fit(x=train_x, y=train_y, epochs=150, verbose = 1)
 
 
 # ### Preprocessing the Input
